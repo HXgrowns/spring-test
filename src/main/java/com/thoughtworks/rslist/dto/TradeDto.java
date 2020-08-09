@@ -12,16 +12,12 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "rsEvent")
-public class RsEventDto {
+@Table(name = "trade")
+public class TradeDto {
     @Id
     @GeneratedValue
-    private int id;
-    private String eventName;
-    private String keyword;
-    private int voteNum;
-    @ManyToOne
-    private UserDto user;
-    private int tradeNum;
+    private int amount;
     private int rank;
+    @ManyToOne
+    private RsEventDto reEvent;
 }
