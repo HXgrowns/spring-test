@@ -31,4 +31,14 @@ public class RsEvent implements Serializable {
         this.keyword = keyword;
         this.userId = userId;
     }
+
+    public RsEvent(RsEventDto rsEventDto) {
+        this.id = rsEventDto.getId();
+        this.eventName = rsEventDto.getEventName();
+        this.keyword = rsEventDto.getKeyword();
+        this.voteNum = rsEventDto.getVoteNum();
+        this.userId = rsEventDto.getUser().getId();
+        this.tradeNum = rsEventDto.getTradeNum();
+        this.rank = rsEventDto.getRank();
+    }
 }
