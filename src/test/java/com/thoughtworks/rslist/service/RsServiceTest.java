@@ -7,6 +7,7 @@ import com.thoughtworks.rslist.dto.RsEventDto;
 import com.thoughtworks.rslist.dto.TradeDto;
 import com.thoughtworks.rslist.dto.UserDto;
 import com.thoughtworks.rslist.dto.VoteDto;
+import com.thoughtworks.rslist.exception.RequestNotValidException;
 import com.thoughtworks.rslist.repository.RsEventRepository;
 import com.thoughtworks.rslist.repository.TradeRepository;
 import com.thoughtworks.rslist.repository.UserRepository;
@@ -14,6 +15,7 @@ import com.thoughtworks.rslist.repository.VoteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.springframework.test.web.client.RequestExpectation;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -120,6 +122,16 @@ class RsServiceTest {
                 .rank(trade.getRank())
                 .reEvent(rsEventRepository.findById(33).orElse(null))
                 .build());
+    }
+
+    @Test
+    void shouldThrowWhenRsEventError() {
+        Trade trade = Trade.builder()
+                .amount(10)
+                .rank(5)
+                .build();
+        when(rsEventRepository.findById(1).orElse(null)).thenReturn(null);
+        assertThrows(RequestNotValidException.class,()->{rsService.buy(trade,2);});
     }
 
     @Test

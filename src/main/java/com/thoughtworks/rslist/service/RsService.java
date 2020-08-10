@@ -84,6 +84,7 @@ public class RsService {
         TradeDto build = TradeDto.builder().amount(trade.getAmount())
                 .rank(trade.getRank())
                 .reEvent(rsEventDto)
+                .userId(trade.getUserId())
                 .build();
         tradeRepository.save(build);
     }

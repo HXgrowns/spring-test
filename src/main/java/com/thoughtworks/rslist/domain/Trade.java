@@ -16,4 +16,5 @@ public class Trade {
     private int rank;
     @NotNull
     private int eventId;
+    private int userId;
 }

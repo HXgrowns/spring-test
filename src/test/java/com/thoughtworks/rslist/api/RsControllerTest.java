@@ -176,9 +176,9 @@ class RsControllerTest {
 
     @Test
     public void shouldBuySuccess() throws Exception {
-        String jsonValue = "{\"amount\":20,\"rank\":5}";
+        String jsonValue = "{\"amount\":20,\"rank\":5,\"userId\":16}";
 
-        mockMvc.perform(post("/rs/buy/{id}", 30)
+        mockMvc.perform(post("/rs/buy/{id}", 32)
                 .content(jsonValue)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

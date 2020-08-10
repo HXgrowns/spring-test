@@ -20,4 +20,5 @@ public class TradeDto {
     private int rank;
     @ManyToOne
     private RsEventDto reEvent;
+    private int userId;
 }
