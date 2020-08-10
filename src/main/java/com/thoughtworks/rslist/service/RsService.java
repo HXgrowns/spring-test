@@ -75,14 +75,6 @@ public class RsService {
             if (trade.getAmount() < byRank.getTradeNum()) {
                 throw new RequestNotValidException("trade fail");
             } else {
-                rsEventDto.setRank(trade.getRank());
-                rsEventDto.setTradeNum(trade.getAmount());
-                rsEventRepository.save(rsEventDto);
-                TradeDto build = TradeDto.builder().amount(trade.getAmount())
-                        .rank(trade.getRank())
-                        .reEvent(rsEventDto)
-                        .build();
-                tradeRepository.save(build);
                 rsEventRepository.delete(byRank);
             }
         }
